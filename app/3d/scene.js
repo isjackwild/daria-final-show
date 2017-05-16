@@ -22,7 +22,7 @@ const setupScene = () => {
 	scene = new THREE.Scene();
 	scene.add(camera);
 
-	rooms['corridor'] = new Room({ id: 'corridor', isActive: true, doors: ['outside', 'bathroom', 'kitchen', 'livingroom'] });
+	rooms['corridor'] = new Room({ id: 'corridor', isActive: false, doors: ['outside', 'bathroom', 'kitchen', 'livingroom'] });
 	scene.add(rooms['corridor']);
 
 	rooms['outside'] = new Room({ id: 'outside', doors: ['corridor'], items: [] });

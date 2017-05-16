@@ -40,7 +40,7 @@ class Room extends THREE.Object3D {
 		// this.envMap.minFilter = THREE.LinearFilter;
 		// this.envMap.magFilter = THREE.LinearFilter;
 		const geometry = new THREE.SphereGeometry( 5, 32, 32 );
-		const material = new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff, map: this.envMap, wireframe: false });
+		const material = new THREE.MeshLambertMaterial( { color: 0xffffff, map: this.envMap, wireframe: false });
 		material.side = THREE.BackSide;
 
 		this.env = new THREE.Mesh( geometry, material );

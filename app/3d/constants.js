@@ -6,7 +6,7 @@ export const SKYBOX_RADIUS = 60;
 export const SKYBOX_SEGS = 30;
 
 export const CAMERA_FOV = 95;
-export const CAMERA_ORBIT_OFFSET = 0.1;
+export const CAMERA_ORBIT_OFFSET = 0.01;
 export const CAMERA_MOVE_STEP = -0.00066;
 
 
@@ -17,6 +17,10 @@ ENV_MAP_SRCS['outside'] = 'outside.jpg';
 ENV_MAP_SRCS['bathroom'] = 'bathroom.jpg';
 ENV_MAP_SRCS['kitchen'] = 'kitchen.jpg';
 ENV_MAP_SRCS['livingroom'] = 'livingroom.jpg';
+
+export const GEOMS_PATH = 'assets/geom/';
+export const GEOM_SRCS = {};
+GEOM_SRCS['livingroom'] = 'livingroom.dae';
 
 
 export const DOOR_DATA = {};
