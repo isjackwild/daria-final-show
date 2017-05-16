@@ -1,10 +1,12 @@
 import React from 'react';
 import PubSub from 'pubsub-js';
-import VideoOverlay from '../components/VideoOverlay/VideoOverlay.js';
+import HoverTitle from '../components/HoverTitle/HoverTitle.js';
+import ObjectOverlay from '../components/ObjectOverlay/ObjectOverlay.js';
+import { OBJECT_DATA } from '../../3d/constants.js';
 
-const view = ({ mousePressed, videoShown, targetFocused, isVR, toggleVr }) => {
+const view = ({ mousePressed, hoverTitle, targetFocused, overlayShown, overlayData, closeOverlay }) => {
 	const cursor = (() => {
-		if (videoShown) return 'back';
+		if (overlayShown) return 'back';
 		if (targetFocused) return 'pointer';
 		if (mousePressed) return 'dragging';
 		return 'drag';
@@ -12,7 +14,8 @@ const view = ({ mousePressed, videoShown, targetFocused, isVR, toggleVr }) => {
 
 	return (
 		<main className={`master-layout cursor--${cursor}`}>
-			<VideoOverlay />
+			<HoverTitle text={hoverTitle} />
+			<ObjectOverlay isVisible={overlayShown} data={overlayData} close={closeOverlay} />
 		</main>
 	);
 };
@@ -23,24 +26,30 @@ const data = Component => class extends React.Component {
 
 		this.state = {
 			mousePressed: false,
-			videoShown: false,
 			targetFocused: false,
-			isVR: false,
+			overlayShown: false,
+			overlayData: null,
+			hoverTitle: '',
 		}
 		this.subs = [];
+
+		this.closeOverlay = this.closeOverlay.bind(this);
+	}
+
+	closeOverlay() {
+		this.setState({ overlayShown: false, overlayData: null });
 	}
 
 	componentDidMount() {
-		PubSub.subscribe('video.show', e => this.setState({ videoShown: true }));
-		PubSub.subscribe('video.hide', e => this.setState({ videoShown: false }));
-		PubSub.subscribe('target.focus', e => this.setState({ targetFocused: true }));
-		PubSub.subscribe('target.blur', e => this.setState({ targetFocused: false }));
+		PubSub.subscribe('target.focus', (e, { title }) => this.setState({ hoverTitle: title, targetFocused: true }));
+		PubSub.subscribe('target.blur', e => this.setState({ hoverTitle: '', targetFocused: false }));
+		PubSub.subscribe('item.show', (e, { id }) => this.setState({ overlayShown: true, overlayData: OBJECT_DATA[id], hoverTitle: '' }));
 		window.addEventListener('mousedown', e => this.setState({ mousePressed: true }));
 		window.addEventListener('mouseup', e => this.setState({ mousePressed: false }));
 	}
 
 	render() {
-		return <Component {...this.state} {...this.props} />
+		return <Component {...this.state} {...this.props} closeOverlay={this.closeOverlay} />
 	}
 };
 

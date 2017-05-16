@@ -57,15 +57,15 @@ const onClick = ({ clientX, clientY, touches }) => {
 const castFocus = () => {
 	let found = false;
 	currentRoom.intersectableObjects.forEach((target) => {
-		const intersects = raycaster.intersectObject( target, true );
+		const intersects = raycaster.intersectObject( target, false );
 		if (intersects.length) {
-			found = true;
+			found = target;
 			target.onFocus();
 			return;
 		}
 		target.onBlur();
 	});
-	if (found) return PubSub.publish('target.focus', false);
+	if (found) return PubSub.publish('target.focus', { title: found.title });
 	return PubSub.publish('target.blur', false);
 }
 

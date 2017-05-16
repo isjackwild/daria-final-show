@@ -3,6 +3,7 @@ import PubSub from 'pubsub-js';
 import 'gsap';
 
 import { textures } from './loader.js';
+import { DOOR_DATA, OBJECT_DATA } from './constants.js';
 
 const up = new THREE.Vector3(0, 1, 0);
 const zero = new THREE.Vector3(0, 0, 0);
@@ -17,7 +18,6 @@ class Room extends THREE.Object3D {
 		this.items = items || [];
 
 		this.envMap = textures[id];
-		console.log(this.envMap, '<<<');
 		this.env = null;
 
 		this.isActive = isActive || false;
@@ -59,9 +59,10 @@ class Room extends THREE.Object3D {
 			const material = new THREE.MeshLambertMaterial( { color: 0xff0000, wireframe: false });
 			const door = new THREE.Mesh( geometry, material );
 			door.roomId = roomId;
+			door.title = DOOR_DATA[roomId].title;
 			
-			door.onFocus = () => { PubSub.publish('target.focus', { id: roomId, title: 'Go back' }) }
-			door.onBlur = () => { PubSub.publish('target.blur', { id: roomId })}
+			door.onFocus = () => {}
+			door.onBlur = () => {}
 			door.onClick = () => { PubSub.publish('room.goto', { id: roomId }) }
 
 			if (!this.isActive) {
@@ -79,15 +80,16 @@ class Room extends THREE.Object3D {
 	}
 
 	initItems() {
-		this.items.forEach(itemId => {
+		this.items.forEach(objectId => {
 			const geometry = new THREE.PlaneGeometry( 2, 4 );
 			const material = new THREE.MeshLambertMaterial( { color: 0x000000, wireframe: false });
 			const item = new THREE.Mesh( geometry, material );
-			item.itemId = itemId;
+			item.objectId = objectId;
+			item.title = OBJECT_DATA[objectId].title;
 			
-			item.onFocus = () => { PubSub.publish('target.focus', { id: itemId, title: itemId }) }
-			item.onBlur = () => { PubSub.publish('target.blur', { id: itemId }) }
-			item.onClick = () => { PubSub.publish('item.show', { id: itemId }) }
+			item.onFocus = () => {}
+			item.onBlur = () => {}
+			item.onClick = () => { PubSub.publish('item.show', { id: objectId }) }
 
 			if (!this.isActive) {
 				item.visible = false;

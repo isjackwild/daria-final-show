@@ -25,16 +25,16 @@ const setupScene = () => {
 	rooms['corridor'] = new Room({ id: 'corridor', isActive: true, doors: ['outside', 'bathroom', 'kitchen', 'livingroom'] });
 	scene.add(rooms['corridor']);
 
-	rooms['outside'] = new Room({ id: 'outside', doors: ['corridor'], items: [1, 2, 3, 4] });
+	rooms['outside'] = new Room({ id: 'outside', doors: ['corridor'], items: [] });
 	scene.add(rooms['outside']);
 
-	rooms['bathroom'] = new Room({ id: 'bathroom', doors: ['corridor'], items: [1, 2, 3] });
+	rooms['bathroom'] = new Room({ id: 'bathroom', doors: ['corridor'], items: ['bathtap', 'window'] });
 	scene.add(rooms['bathroom']);
 
-	rooms['kitchen'] = new Room({ id: 'kitchen', doors: ['corridor'], items: [1, 2, 3, 4] });
+	rooms['kitchen'] = new Room({ id: 'kitchen', doors: ['corridor'], items: ['lightpillars', 'northernlights'] });
 	scene.add(rooms['kitchen']);
 
-	rooms['livingroom'] = new Room({ id: 'livingroom', doors: ['corridor'], items: [1, 2, 3] });
+	rooms['livingroom'] = new Room({ id: 'livingroom', doors: ['corridor'], items: ['bluehour', 'greenflash', 'mirage'] });
 	scene.add(rooms['livingroom']);
 
 	currentRoom = rooms['corridor'];
