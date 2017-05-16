@@ -3,8 +3,8 @@ import PubSub from 'pubsub-js';
 import { render } from 'react-dom';
 import _ from 'lodash';
 import MobileDetect from 'mobile-detect';
-import { textureLoader, colladaLoader } from './3d/loader.js';
-import { SPHEREMAP_SRC, GEOM_SRC } from './3d/constants.js';
+import { textureLoader, colladaLoader, loadingManager, textures, geometries } from './3d/loader.js';
+import { ENV_MAP_SRCS, MAPS_PATH } from './3d/constants.js';
 
 import Master from './ui/layouts/Master.js';
 
@@ -13,8 +13,6 @@ import { init as initScene } from './3d/scene.js';
 import { init as initCamera, onResize as onResizeCamera, camera } from './3d/camera.js';
 import { init as initInput } from './3d/input-handler.js';
 
-let textures = [];
-let geometries = [];
 
 const kickIt = () => {
 	console.log('kickIt');
@@ -25,12 +23,29 @@ const kickIt = () => {
 	if (window.firefox) document.body.classList.add('firefox');
 	if (window.mobile) document.body.classList.add('mobile');
 	addEventListeners();
-	// load();
+	
+	load();
 
-	initScene();
-	initLoop();
-	initInput();
-	initUI();
+	loadingManager.onLoad = () => {
+		console.log('all loaded');
+		initScene();
+		initLoop();
+		initInput();
+		initUI();
+	}
+}
+
+const load = () => {
+	console.log(ENV_MAP_SRCS);
+	// ENV_MAP_SRCS.forEach((src, i, keys) => {
+	// 	console.log(src, i, keys);
+	// 	textures[keys[i]] = textureLoader.load()
+	// });
+
+	for (let key in ENV_MAP_SRCS) {
+		console.log(ENV_MAP_SRCS[key]);
+		textures[key] = textureLoader.load(MAPS_PATH + ENV_MAP_SRCS[key])
+	}
 }
 
 

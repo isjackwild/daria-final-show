@@ -22,22 +22,22 @@ const setupScene = () => {
 	scene = new THREE.Scene();
 	scene.add(camera);
 
-	rooms['hallway'] = new Room({ id: 'hallway', isActive: true, doors: ['outside', 'bathroom', 'kitchen', 'livingroom'] });
-	scene.add(rooms['hallway']);
+	rooms['corridor'] = new Room({ id: 'corridor', isActive: true, doors: ['outside', 'bathroom', 'kitchen', 'livingroom'] });
+	scene.add(rooms['corridor']);
 
-	rooms['outside'] = new Room({ id: 'hallway', doors: ['hallway'] });
+	rooms['outside'] = new Room({ id: 'outside', doors: ['corridor'], items: [1, 2, 3, 4] });
 	scene.add(rooms['outside']);
 
-	rooms['bathroom'] = new Room({ id: 'hallway', doors: ['hallway'] });
+	rooms['bathroom'] = new Room({ id: 'bathroom', doors: ['corridor'], items: [1, 2, 3] });
 	scene.add(rooms['bathroom']);
 
-	rooms['kitchen'] = new Room({ id: 'hallway', doors: ['hallway'] });
+	rooms['kitchen'] = new Room({ id: 'kitchen', doors: ['corridor'], items: [1, 2, 3, 4] });
 	scene.add(rooms['kitchen']);
 
-	rooms['livingroom'] = new Room({ id: 'hallway', doors: ['hallway'] });
+	rooms['livingroom'] = new Room({ id: 'livingroom', doors: ['corridor'], items: [1, 2, 3] });
 	scene.add(rooms['livingroom']);
 
-	currentRoom = rooms['hallway'];
+	currentRoom = rooms['corridor'];
 
 	console.log(currentRoom, rooms);
 
