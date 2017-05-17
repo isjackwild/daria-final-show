@@ -20,7 +20,11 @@ ENV_MAP_SRCS['livingroom'] = 'livingroom.jpg';
 
 export const GEOMS_PATH = 'assets/geom/';
 export const GEOM_SRCS = {};
-GEOM_SRCS['livingroom'] = 'livingroom.dae';
+GEOM_SRCS['bathroom'] = '3d-scene_bathroom.dae';
+GEOM_SRCS['livingroom'] = '3d-scene_livingroom.dae';
+GEOM_SRCS['corridor'] = '3d-scene_corridor.dae';
+GEOM_SRCS['kitchen'] = '3d-scene_kitchen.dae';
+GEOM_SRCS['outside'] = '3d-scene_outside.dae';
 
 
 export const DOOR_DATA = {};
@@ -33,67 +37,67 @@ DOOR_DATA['livingroom'] = { title: 'Living Room' };
 export const IMAGES_PATH = 'assets/images/';
 export const VIDEOS_PATH = 'assets/videos/';
 export const OBJECT_DATA = {};
-OBJECT_DATA['bathtap'] = {
-	title: 'Bathtap',
+OBJECT_DATA['bathtab'] = {
+	title: 'Bathtab',
 	leftText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget massa commodo, semper turpis non, auctor eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris dignissim pretium fringilla.',
 	rightText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget massa commodo, semper turpis non, auctor eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris dignissim pretium fringilla.',
-	leftImgSrc: 'http://placehold.it/800x600',
-	rightImgSrc: 'http://placehold.it/800x600',
-	objectImgSrc: 'http://placehold.it/800x600',
+	leftImgSrc: 'http://placehold.it/800x500',
+	rightImgSrc: 'http://placehold.it/800x500',
+	objectImgSrc: 'http://placehold.it/800x500',
 	videoSrc: '',
 };
 OBJECT_DATA['window'] = {
 	title: 'Window',
 	leftText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget massa commodo, semper turpis non, auctor eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris dignissim pretium fringilla.',
 	rightText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget massa commodo, semper turpis non, auctor eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris dignissim pretium fringilla.',
-	leftImgSrc: 'http://placehold.it/800x600',
-	rightImgSrc: 'http://placehold.it/800x600',
-	objectImgSrc: 'http://placehold.it/800x600',
+	leftImgSrc: 'http://placehold.it/800x500',
+	rightImgSrc: 'http://placehold.it/800x500',
+	objectImgSrc: 'http://placehold.it/800x500',
 	videoSrc: '',
 };
 OBJECT_DATA['lightpillars'] = {
 	title: 'Light Pillars',
 	leftText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget massa commodo, semper turpis non, auctor eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris dignissim pretium fringilla.',
 	rightText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget massa commodo, semper turpis non, auctor eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris dignissim pretium fringilla.',
-	leftImgSrc: 'http://placehold.it/800x600',
-	rightImgSrc: 'http://placehold.it/800x600',
-	objectImgSrc: 'http://placehold.it/800x600',
+	leftImgSrc: 'http://placehold.it/800x500',
+	rightImgSrc: 'http://placehold.it/800x500',
+	objectImgSrc: 'http://placehold.it/800x500',
 	videoSrc: '',
 };
-OBJECT_DATA['northernlights'] = {
+OBJECT_DATA['nothernlights'] = {
 	title: 'Northern Lights',
 	leftText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget massa commodo, semper turpis non, auctor eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris dignissim pretium fringilla.',
 	rightText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget massa commodo, semper turpis non, auctor eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris dignissim pretium fringilla.',
-	leftImgSrc: 'http://placehold.it/800x600',
-	rightImgSrc: 'http://placehold.it/800x600',
-	objectImgSrc: 'http://placehold.it/800x600',
+	leftImgSrc: 'http://placehold.it/800x500',
+	rightImgSrc: 'http://placehold.it/800x500',
+	objectImgSrc: 'http://placehold.it/800x500',
 	videoSrc: '',
 };
 OBJECT_DATA['bluehour'] = {
 	title: 'Blue Hour',
 	leftText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget massa commodo, semper turpis non, auctor eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris dignissim pretium fringilla.',
 	rightText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget massa commodo, semper turpis non, auctor eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris dignissim pretium fringilla.',
-	leftImgSrc: 'http://placehold.it/800x600',
-	rightImgSrc: 'http://placehold.it/800x600',
-	objectImgSrc: 'http://placehold.it/800x600',
+	leftImgSrc: 'http://placehold.it/800x500',
+	rightImgSrc: 'http://placehold.it/800x500',
+	objectImgSrc: 'http://placehold.it/800x500',
 	videoSrc: '',
 };
 OBJECT_DATA['greenflash'] = {
 	title: 'Green Flash',
 	leftText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget massa commodo, semper turpis non, auctor eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris dignissim pretium fringilla.',
 	rightText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget massa commodo, semper turpis non, auctor eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris dignissim pretium fringilla.',
-	leftImgSrc: 'http://placehold.it/800x600',
-	rightImgSrc: 'http://placehold.it/800x600',
-	objectImgSrc: 'http://placehold.it/800x600',
+	leftImgSrc: 'http://placehold.it/800x500',
+	rightImgSrc: 'http://placehold.it/800x500',
+	objectImgSrc: 'http://placehold.it/800x500',
 	videoSrc: '',
 };
 OBJECT_DATA['mirage'] = {
 	title: 'Mirage',
 	leftText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget massa commodo, semper turpis non, auctor eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris dignissim pretium fringilla.',
 	rightText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget massa commodo, semper turpis non, auctor eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris dignissim pretium fringilla.',
-	leftImgSrc: 'http://placehold.it/800x600',
-	rightImgSrc: 'http://placehold.it/800x600',
-	objectImgSrc: 'http://placehold.it/800x600',
+	leftImgSrc: 'http://placehold.it/800x500',
+	rightImgSrc: 'http://placehold.it/800x500',
+	objectImgSrc: 'http://placehold.it/800x500',
 	videoSrc: '',
 };
 

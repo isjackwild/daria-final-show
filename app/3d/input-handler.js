@@ -12,35 +12,50 @@ export const ray = raycaster.ray;
 const tmpPos = new THREE.Vector3();
 const zeroVec = new THREE.Vector2(0, 0);
 
+let ignoreClick = false;
+let overlayShown = false;
 
 export const init = () => {
 	addEventListeners();
+	PubSub.subscribe('item.show', () => overlayShown = true);
+	PubSub.subscribe('item.hide', () => overlayShown = false);
+	PubSub.subscribe('about.show', () => overlayShown = true);
+	PubSub.subscribe('about.hide', () => overlayShown = false);
 }
 
 const addEventListeners = () => {
 	if (window.mobile) {
 		window.addEventListener('deviceorientation', _.throttle(onDeviceOrientation, 33));
-		window.addEventListener('touchstart', onClick);
+		window.addEventListener('click', onClick);
 	} else {
 		window.addEventListener('mousemove', _.throttle(onMouseMove, 33));
 		window.addEventListener('click', onClick);
+		window.addEventListener('mousedown', onMouseDown);
 	}
 }
 
 const onMouseMove = ({ clientX, clientY }) => {
+	if (overlayShown) return;
 	const x = 2 * (clientX / window.innerWidth) - 1;
 	const y = 1 - 2 * (clientY / window.innerHeight);
 	mouseVector.set(x, y, camera.position.z);
 	raycaster.setFromCamera(mouseVector, camera);
 	castFocus();
+	ignoreClick = true;
 }
 
 const onDeviceOrientation = ({ clientX, clientY }) => {
+	if (overlayShown) return;
 	raycaster.setFromCamera(zeroVec, camera);
 	castFocus();
 }
 
+const onMouseDown = () => {
+	ignoreClick = false;
+}
+
 const onClick = ({ clientX, clientY, touches }) => {
+	if (ignoreClick || overlayShown) return;
 	let x, y;
 	if (touches) {
 		x = 2 * (touches[0].clientX / window.innerWidth) - 1;

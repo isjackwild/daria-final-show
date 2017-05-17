@@ -22,24 +22,22 @@ const setupScene = () => {
 	scene = new THREE.Scene();
 	scene.add(camera);
 
-	rooms['corridor'] = new Room({ id: 'corridor', isActive: false, doors: ['outside', 'bathroom', 'kitchen', 'livingroom'] });
+	rooms['corridor'] = new Room({ id: 'corridor', isActive: true, doors: ['outside', 'bathroom', 'kitchen', 'livingroom'] });
 	scene.add(rooms['corridor']);
 
 	rooms['outside'] = new Room({ id: 'outside', doors: ['corridor'], items: [] });
 	scene.add(rooms['outside']);
 
-	rooms['bathroom'] = new Room({ id: 'bathroom', doors: ['corridor'], items: ['bathtap', 'window'] });
+	rooms['bathroom'] = new Room({ id: 'bathroom', doors: ['corridor'], items: ['bathtab', 'window'] });
 	scene.add(rooms['bathroom']);
 
-	rooms['kitchen'] = new Room({ id: 'kitchen', doors: ['corridor'], items: ['lightpillars', 'northernlights'] });
+	rooms['kitchen'] = new Room({ id: 'kitchen', doors: ['corridor'], items: ['lightpillars', 'nothernlights'] });
 	scene.add(rooms['kitchen']);
 
 	rooms['livingroom'] = new Room({ id: 'livingroom', doors: ['corridor'], items: ['bluehour', 'greenflash', 'mirage'] });
 	scene.add(rooms['livingroom']);
 
 	currentRoom = rooms['corridor'];
-
-	console.log(currentRoom, rooms);
 
 	lights.forEach((light) => {
 		scene.add(light);

@@ -15,7 +15,8 @@ let mouseIsDown = false;
 
 export const init = () => {
 	camera = new THREE.PerspectiveCamera(CAMERA_FOV, window.innerWidth / window.innerHeight, 0.0001, 1000000);
-	camera.position.set(0, 0.1, CAMERA_ORBIT_OFFSET);
+	camera.position.set(0, 0, CAMERA_ORBIT_OFFSET);
+	camera.lookAt(new THREE.Vector3())
 
 	controls = new THREE.OrbitControls(camera);
 	controls.target.set(

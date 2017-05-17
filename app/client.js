@@ -4,7 +4,7 @@ import PubSub from 'pubsub-js';
 import { render } from 'react-dom';
 import _ from 'lodash';
 import MobileDetect from 'mobile-detect';
-import { textureLoader, colladaLoader, loadingManager, textures, geometries } from './3d/loader.js';
+import { textureLoader, colladaLoader, loadingManager, textures, objectMeshes } from './3d/loader.js';
 import { ENV_MAP_SRCS, MAPS_PATH, GEOM_SRCS, GEOMS_PATH } from './3d/constants.js';
 
 import Master from './ui/layouts/Master.js';
@@ -34,18 +34,17 @@ const kickIt = () => {
 		initInput();
 		initUI();
 
-		for (let key in GEOM_SRCS) {
-			colladaLoader.load(GEOMS_PATH + GEOM_SRCS[key], collada => {
-				collada.scene.children.forEach(c => {
-					c.children[0].material.color = new THREE.Color(Math.random() * 0xffffff);
-					c.children[0].material.wireframe = true;
-				});
-				collada.scene.children.forEach(c => {
-					scene.add(c);
-				});
-			});
-		}
-		console.log(geometries);
+		// for (let key in GEOM_SRCS) {
+		// 	colladaLoader.load(GEOMS_PATH + GEOM_SRCS[key], collada => {
+		// 		collada.scene.children.forEach(c => {
+		// 			c.children[0].material.color = new THREE.Color(Math.random() * 0xffffff);
+		// 			c.children[0].material.wireframe = true;
+		// 		});
+		// 		collada.scene.children.forEach(c => {
+		// 			scene.add(c);
+		// 		});
+		// 	});
+		// }
 	}
 }
 
@@ -59,9 +58,23 @@ const load = () => {
 		textures[key] = textureLoader.load(MAPS_PATH + ENV_MAP_SRCS[key])
 	}
 
-	// for (let key in GEOM_SRCS) {
-	// 	geometries[key] = colladaLoader.load(GEOMS_PATH + GEOM_SRCS[key], collada => scene.add(collada.scene));
-	// }
+	for (let key in GEOM_SRCS) {
+		objectMeshes[key] = {};
+		colladaLoader.load(GEOMS_PATH + GEOM_SRCS[key], collada => {
+			collada.scene.children.forEach(c => {
+				// const mesh = c.children[0];
+				// mesh.position.copy(c.position);
+				// mesh.rotation.copy(c.rotation);
+				// mesh.quaternion.copy(c.quaternion);
+				// mesh.matrix.copy(c.matrix);
+				// mesh.matrixWorld.copy(c.matrixWorld);
+				// mesh.scale.copy(c.scale);
+				// console.log(c);
+				objectMeshes[key][c.name] = c;
+			});
+		});
+	}
+	console.log(objectMeshes, '<<<');
 }
 
 
