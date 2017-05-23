@@ -1,9 +1,8 @@
 import React from 'react';
-import PubSub from 'pubsub-js';
 
-const ObjectOverlay = ({ isVisible, close }) => {
+const AboutOverlay = ({ isVisible, close }) => {
 	return (
-		<section className={`overlay about-overlay object-overlay--${isVisible ? 'visible' : 'hidden'}`} onClick={close} >
+		<section className={`overlay about-overlay overlay--${isVisible ? 'visible' : 'hidden'}`} onClick={close} >
 			<div className="overlay__inner">
 				<h2 className="overlay__title">Technological Nature</h2>
 			</div>
@@ -11,5 +10,5 @@ const ObjectOverlay = ({ isVisible, close }) => {
 	);
 };
 
-export default ObjectOverlay;
+export default AboutOverlay;
 

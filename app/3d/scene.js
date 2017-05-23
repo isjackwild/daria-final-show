@@ -22,29 +22,35 @@ const setupScene = () => {
 	scene = new THREE.Scene();
 	scene.add(camera);
 
-	rooms['corridor'] = new Room({ id: 'corridor', isActive: true, doors: ['outside', 'bathroom', 'kitchen', 'livingroom'] });
+	rooms['corridor'] = new Room({ id: 'corridor', isActive: true, doors: [{ id: 'outside' }, {id: 'bathroom' }, { id: 'kitchen' }, { id: 'livingroom' }] });
 	scene.add(rooms['corridor']);
 
-	rooms['outside'] = new Room({ id: 'outside', doors: ['corridor'], items: [] });
+	rooms['outside'] = new Room({ id: 'outside', doors: [{ id: 'corridor' }], items: [] });
 	scene.add(rooms['outside']);
 
-	rooms['bathroom'] = new Room({ id: 'bathroom', doors: ['corridor'], items: ['bathtab', 'window'] });
+	rooms['bathroom'] = new Room({ id: 'bathroom', doors: [{ id: 'corridor' }], items: ['bathtab', 'window'] });
 	scene.add(rooms['bathroom']);
 
-	rooms['kitchen'] = new Room({ id: 'kitchen', doors: ['corridor'], items: ['lightpillars', 'nothernlights'] });
+	rooms['kitchen'] = new Room({ id: 'kitchen', doors: [{ id: 'corridor' }], items: ['lightpillars', 'nothernlights'] });
 	scene.add(rooms['kitchen']);
 
-	rooms['livingroom'] = new Room({ id: 'livingroom', doors: ['corridor'], items: ['bluehour', 'greenflash', 'mirage'] });
+	rooms['livingroom'] = new Room(
+		{
+			id: 'livingroom',
+			doors: [
+				{ id: 'corridor', angleX: Math.PI * 0.02, angleY: Math.PI * -0.62, scale: 1.1 }
+			],
+			items: ['bluehour', 'greenflash', 'mirage']
+		});
 	scene.add(rooms['livingroom']);
 
 	currentRoom = rooms['corridor'];
-	console.log(currentRoom, '<<')
 
 	lights.forEach((light) => {
 		scene.add(light);
 	});
 
-	scene.add(new THREE.AxisHelper(0.3));
+	// scene.add(new THREE.AxisHelper(0.3));
 }
 
 const addEventListeners = () => {

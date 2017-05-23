@@ -62,7 +62,8 @@ class Room extends THREE.Object3D {
 	}
 
 	initDoors() {
-		this.doors.forEach(roomId => {
+		this.doors.forEach(doorData => {
+			const { id, angleX = 0, angleY = Math.random() * Math.PI * 2, scale = 1 } = doorData;
 			const map = textures['door'];
 			map.minFilter = THREE.LinearFilter;
 			map.magFilter = THREE.LinearFilter;
@@ -75,20 +76,27 @@ class Room extends THREE.Object3D {
 			// const door = this._rId === 'corridor' ? objectMeshes[this._rId][`door--${roomId}`] : objectMeshes[this._rId][`door--${this._rId}`];
 			// if (!door) console.log(this._rId, roomId);
 
-			door.roomId = roomId;
-			door.title = DOOR_DATA[roomId].title;
+			door.roomId = id;
+			door.title = DOOR_DATA[id].title;
 			
 			door.onFocus = () => {}
 			door.onBlur = () => {}
-			door.onClick = () => { PubSub.publish('room.goto', { id: roomId }) }
+			door.onClick = () => { PubSub.publish('room.goto', { id }) }
 
 			if (!this.isActive) {
 				door.visible = false;
 				door.material.opacity = 0;
 			}
 
+			// door.position.set(0, 0, 0.45);
+			// door.position.applyAxisAngle(axisY, Math.random() * Math.PI * 2);
+			// door.lookAt(zero);
+
 			door.position.set(0, 0, 0.45);
-			door.position.applyAxisAngle(axisY, Math.random() * Math.PI * 2);
+			door.position.applyAxisAngle(axisX, angleX);
+			door.position.applyAxisAngle(axisY, angleY);
+			door.scale.x = scale;
+			door.scale.y = scale;
 			door.lookAt(zero);
 
 			this.add(door);

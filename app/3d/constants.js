@@ -39,7 +39,7 @@ DOOR_DATA['kitchen'] = { title: 'Kitchen' };
 DOOR_DATA['livingroom'] = { title: 'Living Room' };
 
 export const IMAGES_PATH = 'assets/images/';
-export const VIDEOS_PATH = 'assets/videos/';
+export const VIDEOS_PATH = 'assets/video/';
 export const OBJECT_DATA = {};
 OBJECT_DATA['bathtab'] = {
 	title: 'Bathtab',
@@ -48,7 +48,7 @@ OBJECT_DATA['bathtab'] = {
 	leftImgSrc: 'http://placehold.it/800x500',
 	rightImgSrc: 'http://placehold.it/800x500',
 	objectImgSrc: 'http://placehold.it/800x500',
-	videoSrc: '',
+	videoSrc: VIDEOS_PATH + '',
 	angleX: Math.PI * 0.2,
 	angleY: 0,
 	scale: 1,
@@ -60,7 +60,7 @@ OBJECT_DATA['window'] = {
 	leftImgSrc: 'http://placehold.it/800x500',
 	rightImgSrc: 'http://placehold.it/800x500',
 	objectImgSrc: 'http://placehold.it/800x500',
-	videoSrc: '',
+	videoSrc: VIDEOS_PATH + '',
 	angleX: Math.PI * 0.2,
 	angleY: 0,
 	scale: 1,
@@ -72,7 +72,7 @@ OBJECT_DATA['lightpillars'] = {
 	leftImgSrc: 'http://placehold.it/800x500',
 	rightImgSrc: 'http://placehold.it/800x500',
 	objectImgSrc: 'http://placehold.it/800x500',
-	videoSrc: '',
+	videoSrc: VIDEOS_PATH + '',
 	angleX: Math.PI * 0.2,
 	angleY: 0,
 	scale: 1,
@@ -84,7 +84,7 @@ OBJECT_DATA['nothernlights'] = {
 	leftImgSrc: 'http://placehold.it/800x500',
 	rightImgSrc: 'http://placehold.it/800x500',
 	objectImgSrc: 'http://placehold.it/800x500',
-	videoSrc: '',
+	videoSrc: VIDEOS_PATH + '',
 	angleX: Math.PI * 0.2,
 	angleY: 0,
 	scale: 1,
@@ -96,7 +96,7 @@ OBJECT_DATA['bluehour'] = {
 	leftImgSrc: IMAGES_PATH + 'blue_hour_nature.jpg',
 	rightImgSrc: IMAGES_PATH + 'blue_hour_technology.jpg',
 	objectImgSrc: MAPS_PATH + 'items/blue_hour.png',
-	videoSrc: '',
+	videoSrc: VIDEOS_PATH + 'blue_hour_video.mp4',
 	angleX: Math.PI * 0.01,
 	angleY: Math.PI * 0.08,
 	scale: 1,
@@ -108,7 +108,7 @@ OBJECT_DATA['greenflash'] = {
 	leftImgSrc: IMAGES_PATH + 'mirage_nature.jpg',
 	rightImgSrc: IMAGES_PATH + 'mirage_technology.jpg',
 	objectImgSrc: MAPS_PATH + 'items/greenflash.png',
-	videoSrc: '',
+	videoSrc: VIDEOS_PATH + 'green_flash_video.mp4',
 	angleX: Math.PI * 0.133,
 	angleY: Math.PI * 0.5,
 	scale: 1.5,
@@ -120,7 +120,7 @@ OBJECT_DATA['mirage'] = {
 	leftImgSrc: IMAGES_PATH + 'mirage_nature.jpg',
 	rightImgSrc: IMAGES_PATH + 'mirage_technology.jpg',
 	objectImgSrc: MAPS_PATH + 'items/mirage.png',
-	videoSrc: '',
+	videoSrc: VIDEOS_PATH + 'mirage_video.mp4',
 	angleX: Math.PI * 0.145,
 	angleY: Math.PI * 1.1,
 	scale: 2.6,
