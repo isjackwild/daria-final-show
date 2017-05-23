@@ -34,17 +34,16 @@ const kickIt = () => {
 		initInput();
 		initUI();
 
-		// for (let key in GEOM_SRCS) {
-		// 	colladaLoader.load(GEOMS_PATH + GEOM_SRCS[key], collada => {
-		// 		collada.scene.children.forEach(c => {
-		// 			c.children[0].material.color = new THREE.Color(Math.random() * 0xffffff);
-		// 			c.children[0].material.wireframe = true;
-		// 		});
-		// 		collada.scene.children.forEach(c => {
-		// 			scene.add(c);
-		// 		});
+		// colladaLoader.load(GEOMS_PATH + GEOM_SRCS['bathroom'], collada => {
+		// 	scene.add(collada.scene);
+		// 	collada.scene.children.forEach(c => {
+		// 		c.children[0].material.color = new THREE.Color(Math.random() * 0xffffff);
+		// 		c.children[0].material.wireframe = true;
 		// 	});
-		// }
+		// 	collada.scene.children.forEach(c => {
+		// 		scene.add(c);
+		// 	});
+		// });
 	}
 }
 
@@ -58,23 +57,23 @@ const load = () => {
 		textures[key] = textureLoader.load(MAPS_PATH + ENV_MAP_SRCS[key])
 	}
 
-	for (let key in GEOM_SRCS) {
-		objectMeshes[key] = {};
-		colladaLoader.load(GEOMS_PATH + GEOM_SRCS[key], collada => {
-			collada.scene.children.forEach(c => {
-				// const mesh = c.children[0];
-				// mesh.position.copy(c.position);
-				// mesh.rotation.copy(c.rotation);
-				// mesh.quaternion.copy(c.quaternion);
-				// mesh.matrix.copy(c.matrix);
-				// mesh.matrixWorld.copy(c.matrixWorld);
-				// mesh.scale.copy(c.scale);
-				// console.log(c);
-				objectMeshes[key][c.name] = c;
-			});
-		});
-	}
-	console.log(objectMeshes, '<<<');
+	// for (let key in GEOM_SRCS) {
+	// 	objectMeshes[key] = {};
+	// 	colladaLoader.load(GEOMS_PATH + GEOM_SRCS[key], collada => {
+	// 		collada.scene.children.forEach(c => {
+	// 			// const mesh = c.children[0];
+	// 			// mesh.position.copy(c.position);
+	// 			// mesh.rotation.copy(c.rotation);
+	// 			// mesh.quaternion.copy(c.quaternion);
+	// 			// mesh.matrix.copy(c.matrix);
+	// 			// mesh.matrixWorld.copy(c.matrixWorld);
+	// 			// mesh.scale.copy(c.scale);
+	// 			// console.log(c);
+	// 			objectMeshes[key][c.name] = c;
+	// 		});
+	// 	});
+	// }
+	// console.log(objectMeshes, '<<<');
 }
 
 

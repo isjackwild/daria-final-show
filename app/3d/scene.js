@@ -38,10 +38,13 @@ const setupScene = () => {
 	scene.add(rooms['livingroom']);
 
 	currentRoom = rooms['corridor'];
+	console.log(currentRoom, '<<')
 
 	lights.forEach((light) => {
 		scene.add(light);
 	});
+
+	scene.add(new THREE.AxisHelper(0.3));
 }
 
 const addEventListeners = () => {

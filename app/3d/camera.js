@@ -48,7 +48,7 @@ export const onResize = () => {
 
 export const updatePosition = (delta) => {
 	if (mouseIsDown || window.videoShown) return;
-	camera.position.applyAxisAngle(axis, (cameraMoveStep.v * delta));
+	// camera.position.applyAxisAngle(axis, (cameraMoveStep.v * delta));
 	camera.lookAt(controls.target);
 }
 

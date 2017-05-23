@@ -12,10 +12,12 @@ const ObjectOverlay = ({ isVisible, close, data }) => {
 				<div className="object-overlay__section-wrapper">
 					<div className="object-overlay__section object-overlay__section--left"> 
 						<img className="object-overlay__img object-overlay__img--left" src={rightImgSrc} />
+						<h3>Nature</h3>
 						<span className="object-overlay__text object-overlay__text--left">{ leftText }</span>
 					</div>
 					<div className="object-overlay__section object-overlay__section--right"> 
 						<img className="object-overlay__img object-overlay__img--right" src={leftImgSrc} />
+						<h3>Technology</h3>
 						<span className="object-overlay__text object-overlay__text--right">{ rightText }</span>
 					</div>
 				</div>
